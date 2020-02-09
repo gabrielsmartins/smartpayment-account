@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class AccountService {
 
-    private CreateAccountUseCase createAccountUseCase;
+    private final CreateAccountUseCase createAccountUseCase;
 
     public Account create(Account account) {
         return createAccountUseCase.create(account);

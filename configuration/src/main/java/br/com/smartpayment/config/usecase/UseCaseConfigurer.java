@@ -1,4 +1,4 @@
-package br.com.smartpayment.usecase;
+package br.com.smartpayment.config.usecase;
 
 import br.com.smartpayment.application.port.CreateAccountPort;
 import br.com.smartpayment.application.service.CreateAccountService;

@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("account")
+@RequestMapping("/account")
 @AllArgsConstructor
 public class AccountController {
 
-    private AccountService service;
-    private AccountWebMapper mapper;
+    private final AccountService service;
+    private final AccountWebMapper mapper;
 
     @PostMapping()
     public ResponseEntity<?> create(AccountRequestDto accountRequestDto){

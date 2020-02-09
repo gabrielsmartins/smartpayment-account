@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class AccountPersistenceAdapter implements CreateAccountPort {
 
-    private AccountRepository repository;
-    private AccountPersistenceMapper mapper;
+    private final AccountRepository repository;
+    private final AccountPersistenceMapper mapper;
 
 
     @Override

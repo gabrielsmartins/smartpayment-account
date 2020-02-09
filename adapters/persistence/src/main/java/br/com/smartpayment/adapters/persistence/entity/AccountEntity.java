@@ -6,15 +6,16 @@ import br.com.smartpayment.adapters.persistence.enums.converter.AccountTypeEnumJ
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Convert;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
 @Table(name = "account")
+@Entity
 public class AccountEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
