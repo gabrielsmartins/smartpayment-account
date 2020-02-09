@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class PersistenceMapperConfigurer {
 
     @Bean
-    public AccountPersistenceMapper persistenceMapper(){
+    public AccountPersistenceMapper accountPersistenceMapper(){
         return new AccountPersistenceMapper();
     }
 }

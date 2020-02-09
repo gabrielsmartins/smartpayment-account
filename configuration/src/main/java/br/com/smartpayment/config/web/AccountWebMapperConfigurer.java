@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class AccountWebMapperConfigurer {
 
     @Bean
-    public AccountWebMapper webMapper(){
+    public AccountWebMapper accountWebMapper(){
        return new AccountWebMapper();
     }
 }
