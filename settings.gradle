@@ -1,0 +1,6 @@
+rootProject.name = 'smartpayment-account'
+include 'application'
+include 'configuration'
+include 'adapters:persistence'
+include 'adapters:web'
+
