@@ -1,12 +1,12 @@
-plugins{
-    id 'org.springframework.boot' version '2.2.4.RELEASE'
+plugins {
+    id "org.springframework.boot" version "2.3.1.RELEASE"
 }
 
 dependencies {
   implementation project(':application')
+  implementation project(':common')
   implementation project(':adapters:web')
   implementation project(':adapters:persistence')
-  runtimeOnly 'com.h2database:h2'
 }
 
 
