@@ -4,8 +4,11 @@ import br.gabrielsmartins.smartpayment.adapters.persistence.entity.accounts.Acco
 import br.gabrielsmartins.smartpayment.adapters.persistence.enums.FinancialTransactionStatusDataEnum;
 import br.gabrielsmartins.smartpayment.adapters.persistence.enums.converter.FinancialTransactionStatusDataEnumConverter;
 import lombok.*;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -17,17 +20,19 @@ import java.util.UUID;
 @Builder(setterPrefix = "with")
 @Getter
 @Setter
-@Table(name = "transaction")
+@Table(name = "financial_transaction")
 @Entity
-public class FinancialTransactionEntity {
+@DynamicUpdate(true)
+@SelectBeforeUpdate(false)
+public class FinancialTransactionEntity implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
+    @EmbeddedId
     private FinancialTransactionEntityId id;
 
-    @Column(name = "start")
-    private LocalDateTime start;
-
-    @Column(name = "end")
-    private LocalDateTime end;
+    @Column(name = "datetime")
+    private LocalDateTime createdAt;
 
     @Column(name = "description")
     private String description;
@@ -42,20 +47,23 @@ public class FinancialTransactionEntity {
     @Convert(converter = FinancialTransactionStatusDataEnumConverter.class)
     private FinancialTransactionStatusDataEnum status;
 
-    @OneToOne
-    @JoinColumn(name = "target", referencedColumnName = "target")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_target_id", referencedColumnName = "account_id")
     private AccountEntity target;
 
+    @Embeddable
     @AllArgsConstructor
     @NoArgsConstructor
     @ToString
     @Builder(setterPrefix = "with")
     @Getter
     @Setter
-    public static class FinancialTransactionEntityId{
+    public static class FinancialTransactionEntityId implements Serializable {
 
-        @ManyToOne
-        @JoinColumn(name = "source", referencedColumnName = "source")
+        private static final long serialVersionUID = 1L;
+
+        @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "account_id", referencedColumnName = "account_id")
         private AccountEntity source;
 
         @Column(name = "identifier")

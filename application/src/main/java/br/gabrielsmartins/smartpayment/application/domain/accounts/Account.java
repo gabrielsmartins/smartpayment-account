@@ -28,7 +28,6 @@ public class Account {
     @Setter(AccessLevel.NONE)
     private List<FinancialTransaction> transactions = new LinkedList<>();
 
-
     public Integer addTransaction(FinancialTransaction transaction){
         FinancialTransaction.FinancialTransactionId transactionId = transaction.getId();
         transactionId.setSource(this);

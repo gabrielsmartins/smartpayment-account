@@ -12,10 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -46,8 +43,7 @@ public class SearchAccountServiceTest {
                 .withAccountBalance(new BigDecimal(1500))
                 .withAmount(new BigDecimal(100))
                 .withDescription("Foo")
-                .withStart(LocalDateTime.now())
-                .withEnd(LocalDateTime.now())
+                .withCreatedAt(LocalDateTime.now())
                 .withStatus(FinancialTransactionStatusEnum.COMMITTED)
                 .build();
 
@@ -79,8 +75,7 @@ public class SearchAccountServiceTest {
                 .withAccountBalance(new BigDecimal(1500))
                 .withAmount(new BigDecimal(100))
                 .withDescription("Foo")
-                .withStart(LocalDateTime.now())
-                .withEnd(LocalDateTime.now())
+                .withCreatedAt(LocalDateTime.now())
                 .withStatus(FinancialTransactionStatusEnum.COMMITTED)
                 .build();
 
@@ -93,10 +88,10 @@ public class SearchAccountServiceTest {
                 .withTransactions(Arrays.asList(transaction))
                 .build();
 
-        when(port.findByCustomerId(any(UUID.class))).thenReturn(Optional.ofNullable(account));
+        when(port.findByCustomerId(any(UUID.class))).thenReturn(Collections.singletonList(account));
 
-        Optional<Account> optionalAccount = this.service.findByCustomerId(UUID.randomUUID());
-        assertThat(optionalAccount).isPresent();
+        List<Account> accounts = this.service.findByCustomerId(UUID.randomUUID());
+        assertThat(accounts).isNotEmpty();
     }
 
 
@@ -112,8 +107,7 @@ public class SearchAccountServiceTest {
                 .withAccountBalance(new BigDecimal(1500))
                 .withAmount(new BigDecimal(100))
                 .withDescription("Foo")
-                .withStart(LocalDateTime.now())
-                .withEnd(LocalDateTime.now())
+                .withCreatedAt(LocalDateTime.now())
                 .withStatus(FinancialTransactionStatusEnum.COMMITTED)
                 .build();
 

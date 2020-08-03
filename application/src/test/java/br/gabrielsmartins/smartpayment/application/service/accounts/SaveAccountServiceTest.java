@@ -44,8 +44,7 @@ public class SaveAccountServiceTest {
                                               .withAccountBalance(new BigDecimal(1500))
                                               .withAmount(new BigDecimal(100))
                                               .withDescription("Foo")
-                                              .withStart(LocalDateTime.now())
-                                              .withEnd(LocalDateTime.now())
+                                              .withCreatedAt(LocalDateTime.now())
                                               .withStatus(FinancialTransactionStatusEnum.COMMITTED)
                                               .build();
 

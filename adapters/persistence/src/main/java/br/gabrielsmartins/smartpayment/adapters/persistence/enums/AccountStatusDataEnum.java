@@ -11,7 +11,6 @@ public enum AccountStatusDataEnum {
     INACTIVE("I", AccountStatusEnum.INACTIVE),
     BLOCKED("B", AccountStatusEnum.BLOCKED);
 
-
     @Getter
     private final String code;
 

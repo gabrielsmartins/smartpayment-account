@@ -10,6 +10,8 @@ import br.gabrielsmartins.smartpayment.application.domain.enums.AccountStatusEnu
 import br.gabrielsmartins.smartpayment.application.domain.enums.AccountTypeEnum;
 import org.mapstruct.*;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring",
 injectionStrategy = InjectionStrategy.CONSTRUCTOR,
 uses = {FinancialTransactionPersistenceMapper.class},
@@ -29,6 +31,10 @@ public interface AccountPersistenceMapper {
             @Mapping(source = "status", target = "status", qualifiedByName = "fromType")
     })
     Account mapToDomain(AccountEntity accountEntity);
+
+    List<AccountEntity> mapToEntity(List<Account> account);
+
+    List<Account> mapToDomain(List<AccountEntity> accountEntity);
 
     default AccountTypeDataEnum toType(AccountTypeEnum accountTypeEnum){
         return AccountTypeDataEnum.fromEnum(accountTypeEnum);

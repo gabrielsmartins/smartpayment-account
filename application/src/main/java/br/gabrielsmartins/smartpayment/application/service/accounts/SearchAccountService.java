@@ -4,12 +4,14 @@ import br.gabrielsmartins.smartpayment.application.domain.accounts.Account;
 import br.gabrielsmartins.smartpayment.application.domain.enums.AccountTypeEnum;
 import br.gabrielsmartins.smartpayment.application.port.in.accounts.SearchAccountUseCase;
 import br.gabrielsmartins.smartpayment.application.port.out.accounts.SearchAccountPort;
+import br.gabrielsmartins.smartpayment.common.stereotype.UseCase;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@UseCase
 @RequiredArgsConstructor
 public class SearchAccountService implements SearchAccountUseCase {
 
@@ -21,7 +23,7 @@ public class SearchAccountService implements SearchAccountUseCase {
     }
 
     @Override
-    public Optional<Account> findByCustomerId(UUID customerId) {
+    public List<Account> findByCustomerId(UUID customerId) {
         return port.findByCustomerId(customerId);
     }
 

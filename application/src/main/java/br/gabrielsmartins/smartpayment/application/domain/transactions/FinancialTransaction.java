@@ -18,8 +18,7 @@ import java.util.UUID;
 public class FinancialTransaction {
 
     private FinancialTransactionId id;
-    private LocalDateTime start;
-    private LocalDateTime end;
+    private LocalDateTime createdAt;
     private String description;
     private BigDecimal amount;
     private BigDecimal accountBalance;

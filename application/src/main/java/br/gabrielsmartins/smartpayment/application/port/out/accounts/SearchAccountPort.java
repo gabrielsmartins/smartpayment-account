@@ -11,8 +11,8 @@ public interface SearchAccountPort {
 
     Optional<Account> findById(UUID id);
 
-    Optional<Account> findByCustomerId(UUID customerId);
+    List<Account> findByCustomerId(UUID customerId);
 
-    List<Account> findByType(AccountTypeEnum type);
+    List<Account> findByType(AccountTypeEnum accountTypeEnum);
 
 }

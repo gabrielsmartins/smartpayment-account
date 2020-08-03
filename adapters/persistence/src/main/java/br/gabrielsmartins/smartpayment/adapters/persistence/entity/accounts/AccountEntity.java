@@ -7,8 +7,11 @@ import br.gabrielsmartins.smartpayment.adapters.persistence.enums.AccountTypeDat
 import br.gabrielsmartins.smartpayment.adapters.persistence.enums.converter.AccountStatusDataEnumConverter;
 import br.gabrielsmartins.smartpayment.adapters.persistence.enums.converter.AccountTypeDataEnumConverter;
 import lombok.*;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -17,17 +20,21 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@ToString
+@ToString(exclude = {"transactions"})
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(setterPrefix = "with")
 @Table(name = "account")
 @Entity
-public class AccountEntity {
+@DynamicUpdate(true)
+@SelectBeforeUpdate(false)
+public class AccountEntity implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", updatable = false, unique = true, nullable = false)
+    @Column(name = "account_id", updatable = false, unique = true, nullable = false)
     private UUID id;
 
     @Column(name="customer_id")
@@ -45,7 +52,7 @@ public class AccountEntity {
     private BigDecimal balance;
 
     @Setter(AccessLevel.NONE)
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id.source", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id.source", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FinancialTransactionEntity> transactions = new LinkedList<>();
 
 
