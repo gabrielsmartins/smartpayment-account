@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(value = "${customers.endpoint}")
+@FeignClient(name="customers", url = "${customers.endpoint}")
 public interface CustomerWebService {
 
     @GetMapping("/{id}")

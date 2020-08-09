@@ -54,7 +54,6 @@ public class SaveAccountServiceTest {
                                  .withCustomerId(UUID.randomUUID())
                                  .withStatus(AccountStatusEnum.ACTIVE)
                                  .withType(AccountTypeEnum.FREE)
-                                 .withTransactions(Arrays.asList(transaction))
                                  .build();
 
         Account savedAccount = this.service.save(account);

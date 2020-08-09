@@ -1,5 +1,5 @@
 FROM openjdk:11-jdk
 VOLUME /app
-COPY build/libs/*.jar .
+COPY build/libs/smartpayment-accounts.jar .
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "-Dspring.active.profile=local", "smartpayment-accounts.jar"]
+ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=dev", "smartpayment-accounts.jar"]

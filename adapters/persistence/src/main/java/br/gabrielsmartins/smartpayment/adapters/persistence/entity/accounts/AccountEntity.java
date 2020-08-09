@@ -24,7 +24,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(setterPrefix = "with")
-@Table(name = "account")
+@Table(name = "tbl_account")
 @Entity
 @DynamicUpdate(true)
 @SelectBeforeUpdate(false)
@@ -37,23 +37,23 @@ public class AccountEntity implements Serializable {
     @Column(name = "account_id", updatable = false, unique = true, nullable = false)
     private UUID id;
 
-    @Column(name="customer_id")
+    @Column(name="account_customer_id")
     private UUID customerId;
 
-    @Column(name="type")
+    @Column(name="account_type")
     @Convert(converter = AccountTypeDataEnumConverter.class)
     private AccountTypeDataEnum type;
 
-    @Column(name="status")
+    @Column(name="account_status")
     @Convert(converter = AccountStatusDataEnumConverter.class)
     private AccountStatusDataEnum status;
 
-    @Column(name="balance")
+    @Column(name="account_balance")
     private BigDecimal balance;
 
     @Setter(AccessLevel.NONE)
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "id.source", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<FinancialTransactionEntity> transactions = new LinkedList<>();
+    private final List<FinancialTransactionEntity> transactions = new LinkedList<>();
 
 
     public Integer addTransaction(FinancialTransactionEntity transaction){

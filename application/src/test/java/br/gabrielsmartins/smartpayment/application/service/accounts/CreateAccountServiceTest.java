@@ -59,7 +59,6 @@ public class CreateAccountServiceTest {
                                  .withCustomerId(UUID.randomUUID())
                                  .withStatus(AccountStatusEnum.ACTIVE)
                                  .withType(AccountTypeEnum.FREE)
-                                 .withTransactions(Arrays.asList(transaction))
                                  .build();
 
         when(saveAccountUseCase.save(any(Account.class))).thenAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
@@ -92,7 +91,6 @@ public class CreateAccountServiceTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusEnum.ACTIVE)
                 .withType(AccountTypeEnum.FREE)
-                .withTransactions(Arrays.asList(transaction))
                 .build();
 
         when(saveAccountUseCase.save(any(Account.class))).thenAnswer(invocationOnMock -> invocationOnMock.getArgument(0));

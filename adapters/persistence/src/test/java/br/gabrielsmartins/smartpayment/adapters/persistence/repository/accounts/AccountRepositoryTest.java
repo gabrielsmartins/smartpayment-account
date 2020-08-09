@@ -47,7 +47,6 @@ public class AccountRepositoryTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
-                .withTransactions(new LinkedList<>())
                 .build();
 
         accountEntity.addTransaction(transactionEntity);
@@ -75,7 +74,6 @@ public class AccountRepositoryTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
-                .withTransactions(new LinkedList<>())
                 .build();
 
         accountEntity.addTransaction(transactionEntity);
@@ -106,7 +104,6 @@ public class AccountRepositoryTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
-                .withTransactions(new LinkedList<>())
                 .build();
 
         accountEntity.addTransaction(transactionEntity);
@@ -137,7 +134,6 @@ public class AccountRepositoryTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
-                .withTransactions(new LinkedList<>())
                 .build();
 
         accountEntity.addTransaction(transactionEntity);

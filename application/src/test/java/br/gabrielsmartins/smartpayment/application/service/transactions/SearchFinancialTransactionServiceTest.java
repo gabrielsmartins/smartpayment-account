@@ -53,7 +53,6 @@ public class SearchFinancialTransactionServiceTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusEnum.ACTIVE)
                 .withType(AccountTypeEnum.FREE)
-                .withTransactions(Arrays.asList(transaction))
                 .build();
 
         when(port.findByAccountIdAndInterval(any(UUID.class), any(LocalDateTime.class), any(LocalDateTime.class))).thenReturn(Arrays.asList(transaction));
@@ -87,7 +86,6 @@ public class SearchFinancialTransactionServiceTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusEnum.ACTIVE)
                 .withType(AccountTypeEnum.FREE)
-                .withTransactions(Arrays.asList(transaction))
                 .build();
 
         when(port.findByCustomerIdAndInterval(any(UUID.class), any(LocalDateTime.class), any(LocalDateTime.class))).thenReturn(Arrays.asList(transaction));

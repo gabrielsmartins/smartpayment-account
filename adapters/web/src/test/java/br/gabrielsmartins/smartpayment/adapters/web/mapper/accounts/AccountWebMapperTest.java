@@ -47,7 +47,6 @@ public class AccountWebMapperTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusEnum.ACTIVE)
                 .withType(AccountTypeEnum.FREE)
-                .withTransactions(Arrays.asList(transaction))
                 .build();
 
         AccountDTO accountDTO = mapper.mapToDTO(account);

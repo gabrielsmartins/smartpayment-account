@@ -51,7 +51,6 @@ public class SaveAccountPersistenceServiceTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
-                .withTransactions(Arrays.asList(transactionEntity))
                 .build();
 
         when(repository.save(accountEntity)).thenAnswer(invocationOnMock -> invocationOnMock.getArgument(0));

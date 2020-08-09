@@ -55,7 +55,6 @@ public class AccountPersistenceMapperTest {
                                 .withCustomerId(UUID.randomUUID())
                                 .withStatus(AccountStatusEnum.ACTIVE)
                                 .withType(AccountTypeEnum.FREE)
-                                .withTransactions(Arrays.asList(transaction))
                                 .build();
 
         AccountEntity accountEntity = this.mapper.mapToEntity(account);
@@ -89,7 +88,6 @@ public class AccountPersistenceMapperTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
-                .withTransactions(Arrays.asList(transactionEntity))
                 .build();
 
         Account account = this.mapper.mapToDomain(accountEntity);

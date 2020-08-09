@@ -1,4 +1,9 @@
 spring:
-  sleuth:
-    sampler:
-      probability: 1.0
+    sleuth:
+        opentracing:
+            enabled: true
+        sampler:
+            probability: 1.0
+        trace-id128: true
+customers.endpoint: http://localhost:8081/v1/customers
+    

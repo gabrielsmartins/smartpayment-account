@@ -1,5 +1,4 @@
 server:
   port: 8080
 
-customers:
-  :endpoint: "http://localhost:8081/v1/customers"
+customers.endpoint: http://localhost:8081/v1/customers

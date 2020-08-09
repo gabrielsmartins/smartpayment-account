@@ -56,7 +56,6 @@ public class FinancialTransactionWebMapperTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusEnum.ACTIVE)
                 .withType(AccountTypeEnum.FREE)
-                .withTransactions(new LinkedList<>())
                 .build();
 
         account.addTransaction(financialTransaction);

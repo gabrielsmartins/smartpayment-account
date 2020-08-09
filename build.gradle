@@ -1,7 +1,12 @@
+plugins {
+    id 'java'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+}
 allprojects {
-	apply plugin: 'java'
-	apply plugin: 'io.spring.dependency-management'
-
+		
+	group = 'br.gabrielsmartins.smartpayment'
+	version = '0.0.1-SNAPSHOT'
+	
 	sourceCompatibility = '11'
 	targetCompatibility = '11'
 
@@ -17,37 +22,20 @@ allprojects {
 		mockitoVersion = '3.3.3'
 		archunitVersion = '0.14.1'
 		h2Version = '1.4.200'
+		mysqlVersion = '8.0.18'
+		logstashVersion = '6.4'
 	}
-
 
 	repositories {
 		mavenCentral()
-	}
-}
-
-buildscript {
-	ext{
-		springBootDependencyManagementPluginVersion = '1.0.9.RELEASE'
-		ltgtPluginVersion = '0.21'
-	}
-	repositories {
-		mavenCentral()
-		maven {
-			url "https://plugins.gradle.org/m2/"
-		}
-	}
-	dependencies {
-		classpath group: 'io.spring.gradle', name: 'dependency-management-plugin', version: springBootDependencyManagementPluginVersion
-		classpath group: 'net.ltgt.gradle', name: 'gradle-apt-plugin', version: ltgtPluginVersion
 	}
 }
 
 subprojects {
+    apply plugin: 'java'
 	apply plugin: 'java-library'
+	apply plugin: 'io.spring.dependency-management'
 	apply plugin: 'jacoco'
-
-	group = 'br.gabrielsmartins.smartpayment'
-	version = '0.0.1-SNAPSHOT'
 
 	dependencies {
 		testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junitVersion
@@ -63,6 +51,8 @@ subprojects {
 		testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
 
 		implementation group: 'org.apache.commons', name: 'commons-lang3', version: apacheCommons3Version
+		
+		implementation group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: logstashVersion
 
 		implementation group: 'org.mapstruct', name: 'mapstruct', version: mapStructVersion
 		annotationProcessor group: 'org.mapstruct', name: 'mapstruct-processor', version: mapStructVersion

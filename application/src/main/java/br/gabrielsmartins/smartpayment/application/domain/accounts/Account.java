@@ -26,7 +26,7 @@ public class Account {
     private BigDecimal balance;
 
     @Setter(AccessLevel.NONE)
-    private List<FinancialTransaction> transactions = new LinkedList<>();
+    private final List<FinancialTransaction> transactions = new LinkedList<>();
 
     public Integer addTransaction(FinancialTransaction transaction){
         FinancialTransaction.FinancialTransactionId transactionId = transaction.getId();

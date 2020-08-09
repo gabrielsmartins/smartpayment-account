@@ -63,7 +63,6 @@ public class SearchAccountPersistenceAdapterTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
-                .withTransactions(Collections.singletonList(transactionEntity))
                 .build();
 
         when(service.findById(any(UUID.class))).thenReturn(Optional.ofNullable(accountEntity));
@@ -94,7 +93,6 @@ public class SearchAccountPersistenceAdapterTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
-                .withTransactions(Collections.singletonList(transactionEntity))
                 .build();
 
         when(service.findByCustomerId(any(UUID.class))).thenReturn(Collections.singletonList(accountEntity));
@@ -126,7 +124,6 @@ public class SearchAccountPersistenceAdapterTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
-                .withTransactions(Collections.singletonList(transactionEntity))
                 .build();
 
         when(service.findByType(any(AccountTypeDataEnum.class))).thenReturn(Collections.singletonList(accountEntity));

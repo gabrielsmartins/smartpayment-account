@@ -53,7 +53,6 @@ public class SearchAccountServiceTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusEnum.ACTIVE)
                 .withType(AccountTypeEnum.FREE)
-                .withTransactions(Arrays.asList(transaction))
                 .build();
 
         when(port.findById(any(UUID.class))).thenReturn(Optional.ofNullable(account));
@@ -85,7 +84,6 @@ public class SearchAccountServiceTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusEnum.ACTIVE)
                 .withType(AccountTypeEnum.FREE)
-                .withTransactions(Arrays.asList(transaction))
                 .build();
 
         when(port.findByCustomerId(any(UUID.class))).thenReturn(Collections.singletonList(account));
@@ -117,7 +115,6 @@ public class SearchAccountServiceTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusEnum.ACTIVE)
                 .withType(AccountTypeEnum.FREE)
-                .withTransactions(Arrays.asList(transaction))
                 .build();
 
         when(port.findByType(any(AccountTypeEnum.class))).thenReturn(Arrays.asList(account));

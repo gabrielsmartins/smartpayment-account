@@ -1,0 +1,35 @@
+version: '3.5'
+services:
+  mysqlserver:
+    image: mysql:5.7
+    restart: always
+    container_name: "mysqlserver"
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_ROOT_PASSWORD=12345
+      - MYSQL_PASSWORD=12345
+      - MYSQL_DATABASE=accountdb
+    volumes:
+      - ./sql/:/docker-entrypoint-initdb.d/
+    ports:
+    - "3306:3306"
+    networks:
+      - smartpayment-customers_smartpayment-network
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: smartpayment-accounts
+    image: gasmartins/smartpayment-accounts
+    ports:
+    - "8080:8080"
+    depends_on:
+      - mysqlserver
+    links:
+      - mysqlserver
+    networks:
+      - smartpayment-customers_smartpayment-network
+networks:
+  smartpayment-customers_smartpayment-network:
+    external: true
+  

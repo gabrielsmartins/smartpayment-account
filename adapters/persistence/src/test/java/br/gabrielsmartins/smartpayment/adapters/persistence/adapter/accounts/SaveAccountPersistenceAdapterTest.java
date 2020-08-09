@@ -61,7 +61,6 @@ public class SaveAccountPersistenceAdapterTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusEnum.ACTIVE)
                 .withType(AccountTypeEnum.FREE)
-                .withTransactions(Arrays.asList(transaction))
                 .build();
 
         when(service.save(any(AccountEntity.class))).thenAnswer(invocationOnMock -> invocationOnMock.getArgument(0));

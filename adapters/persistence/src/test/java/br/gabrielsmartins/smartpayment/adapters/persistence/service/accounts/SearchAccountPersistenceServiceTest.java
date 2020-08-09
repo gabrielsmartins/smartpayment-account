@@ -50,7 +50,6 @@ public class SearchAccountPersistenceServiceTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
-                .withTransactions(Arrays.asList(transactionEntity))
                 .build();
 
         when(repository.findById(any(UUID.class))).thenReturn(Optional.ofNullable(accountEntity));
@@ -80,7 +79,6 @@ public class SearchAccountPersistenceServiceTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
-                .withTransactions(Arrays.asList(transactionEntity))
                 .build();
 
 
@@ -111,7 +109,6 @@ public class SearchAccountPersistenceServiceTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
-                .withTransactions(Arrays.asList(transactionEntity))
                 .build();
 
 

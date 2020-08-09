@@ -20,7 +20,7 @@ import java.util.UUID;
 @Builder(setterPrefix = "with")
 @Getter
 @Setter
-@Table(name = "financial_transaction")
+@Table(name = "tbl_financial_transaction")
 @Entity
 @DynamicUpdate(true)
 @SelectBeforeUpdate(false)
@@ -31,24 +31,24 @@ public class FinancialTransactionEntity implements Serializable {
     @EmbeddedId
     private FinancialTransactionEntityId id;
 
-    @Column(name = "datetime")
+    @Column(name = "financial_transaction_created_at")
     private LocalDateTime createdAt;
 
-    @Column(name = "description")
+    @Column(name = "financial_transaction_description")
     private String description;
 
-    @Column(name = "amount")
+    @Column(name = "financial_transaction_amount")
     private BigDecimal amount;
 
-    @Column(name = "account_balance")
+    @Column(name = "financial_transaction_account_balance")
     private BigDecimal accountBalance;
 
-    @Column(name = "status")
+    @Column(name = "financial_transaction_status")
     @Convert(converter = FinancialTransactionStatusDataEnumConverter.class)
     private FinancialTransactionStatusDataEnum status;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_target_id", referencedColumnName = "account_id")
+    @JoinColumn(name = "financial_transaction_account_target_id", referencedColumnName = "account_id")
     private AccountEntity target;
 
     @Embeddable
@@ -63,10 +63,10 @@ public class FinancialTransactionEntity implements Serializable {
         private static final long serialVersionUID = 1L;
 
         @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "account_id", referencedColumnName = "account_id")
+        @JoinColumn(name = "financial_transaction_account_id", referencedColumnName = "account_id")
         private AccountEntity source;
 
-        @Column(name = "identifier")
+        @Column(name = "financial_transaction_identifier")
         private UUID identifier;
     }
 

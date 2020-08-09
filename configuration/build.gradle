@@ -1,5 +1,5 @@
 plugins {
-    id "org.springframework.boot" version "2.3.1.RELEASE"
+    id 'org.springframework.boot' version '2.3.2.RELEASE'
 }
 
 
@@ -11,4 +11,8 @@ dependencies {
   implementation group: 'com.tngtech.archunit', name: 'archunit', version: archunitVersion
 }
 
-
+bootJar {
+  destinationDirectory = file('../build/libs')
+  baseName  = rootProject.name
+  version = ''
+}

@@ -50,7 +50,6 @@ public class FinancialTransactionRepositoryTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
-                .withTransactions(new LinkedList<>())
                 .build();
 
         accountEntity.addTransaction(transactionEntity);
@@ -84,7 +83,6 @@ public class FinancialTransactionRepositoryTest {
                 .withCustomerId(UUID.randomUUID())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
-                .withTransactions(new LinkedList<>())
                 .build();
 
         accountEntity.addTransaction(transactionEntity);
