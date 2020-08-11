@@ -26,7 +26,7 @@ public interface FinancialTransactionRepository extends JpaRepository<FinancialT
             "join f.id.source a " +
             "where a.customerId = :pCustomerId " +
             "and f.createdAt between :pStartDatetime and :pEndDatetime")
-    List<FinancialTransactionEntity> findByCustomerIdAndInterval(@Param("pCustomerId") UUID customerId,
+    List<FinancialTransactionEntity> findByCustomerIdAndInterval(@Param("pCustomerId") String customerId,
                                                                  @Param("pStartDatetime") LocalDateTime startDatetime,
                                                                  @Param("pEndDatetime") LocalDateTime endDatetime);
 }

@@ -23,7 +23,7 @@ public class SearchAccountService implements SearchAccountUseCase {
     }
 
     @Override
-    public List<Account> findByCustomerId(UUID customerId) {
+    public List<Account> findByCustomerId(String customerId) {
         return port.findByCustomerId(customerId);
     }
 

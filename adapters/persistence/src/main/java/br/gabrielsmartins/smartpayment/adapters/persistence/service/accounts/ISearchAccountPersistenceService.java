@@ -11,7 +11,7 @@ public interface ISearchAccountPersistenceService {
 
     Optional<AccountEntity> findById(UUID id);
 
-    List<AccountEntity> findByCustomerId(UUID customerId);
+    List<AccountEntity> findByCustomerId(String customerId);
 
     List<AccountEntity> findByType(AccountTypeDataEnum type);
 

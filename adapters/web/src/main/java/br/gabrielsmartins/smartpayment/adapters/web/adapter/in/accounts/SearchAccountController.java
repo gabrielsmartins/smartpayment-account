@@ -34,7 +34,7 @@ public class SearchAccountController {
     }
 
     @GetMapping(params = {"customer_id"})
-    public ResponseEntity<?> findByCustomerId(@RequestParam("customer_id")UUID customerId) throws InvalidCustomerException {
+    public ResponseEntity<?> findByCustomerId(@RequestParam("customer_id")String customerId) throws InvalidCustomerException {
         List<Account> accounts = useCase.findByCustomerId(customerId);
         if(accounts.isEmpty())
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

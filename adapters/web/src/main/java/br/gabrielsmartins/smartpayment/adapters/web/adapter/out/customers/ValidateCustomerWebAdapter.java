@@ -6,8 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.UUID;
-
 @WebAdapter
 @RequiredArgsConstructor
 public class ValidateCustomerWebAdapter implements ValidateCustomerPort {
@@ -15,8 +13,8 @@ public class ValidateCustomerWebAdapter implements ValidateCustomerPort {
     private final CustomerWebService webService;
 
     @Override
-    public boolean isValid(UUID customerId) {
-        ResponseEntity<CustomerDTO> response = webService.findById(customerId.toString());
+    public boolean isValid(String customerId) {
+        ResponseEntity<CustomerDTO> response = webService.findById(customerId);
         return response.getStatusCode() == HttpStatus.OK;
     }
 

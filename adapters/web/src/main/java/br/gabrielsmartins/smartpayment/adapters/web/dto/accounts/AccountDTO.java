@@ -18,7 +18,7 @@ public class AccountDTO {
     private UUID id;
 
     @JsonProperty(value = "customer_id")
-    private UUID customerId;
+    private String customerId;
 
     @JsonProperty(value = "type")
     private String type;

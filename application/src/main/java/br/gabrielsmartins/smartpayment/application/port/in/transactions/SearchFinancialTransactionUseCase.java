@@ -10,7 +10,7 @@ public interface SearchFinancialTransactionUseCase {
 
     List<FinancialTransaction> findByAccountIdAndInterval(UUID accountId, LocalDateTime start, LocalDateTime end);
 
-    List<FinancialTransaction> findByCustomerIdAndInterval(UUID customerId, LocalDateTime start, LocalDateTime end);
+    List<FinancialTransaction> findByCustomerIdAndInterval(String customerId, LocalDateTime start, LocalDateTime end);
 
 
 }

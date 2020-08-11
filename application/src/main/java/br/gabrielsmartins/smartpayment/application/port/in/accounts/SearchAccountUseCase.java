@@ -11,7 +11,7 @@ public interface SearchAccountUseCase {
 
     Optional<Account> findById(UUID id);
 
-    List<Account> findByCustomerId(UUID customerId);
+    List<Account> findByCustomerId(String customerId);
 
     List<Account> findByType(AccountTypeEnum type);
 

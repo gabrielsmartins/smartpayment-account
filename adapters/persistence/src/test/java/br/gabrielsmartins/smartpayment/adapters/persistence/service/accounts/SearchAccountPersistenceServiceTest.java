@@ -16,6 +16,7 @@ import java.util.*;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -47,7 +48,7 @@ public class SearchAccountPersistenceServiceTest {
         AccountEntity accountEntity = AccountEntity.builder()
                 .withId(UUID.randomUUID())
                 .withBalance(new BigDecimal(1500))
-                .withCustomerId(UUID.randomUUID())
+                .withCustomerId(UUID.randomUUID().toString())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
                 .build();
@@ -76,13 +77,13 @@ public class SearchAccountPersistenceServiceTest {
         AccountEntity accountEntity = AccountEntity.builder()
                 .withId(UUID.randomUUID())
                 .withBalance(new BigDecimal(1500))
-                .withCustomerId(UUID.randomUUID())
+                .withCustomerId(UUID.randomUUID().toString())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
                 .build();
 
 
-        when(repository.findByCustomerId(any(UUID.class))).thenReturn(Collections.singletonList(accountEntity));
+        when(repository.findByCustomerId(anyString())).thenReturn(Collections.singletonList(accountEntity));
 
         List<AccountEntity> accounts = service.findByCustomerId(accountEntity.getCustomerId());
 
@@ -106,7 +107,7 @@ public class SearchAccountPersistenceServiceTest {
         AccountEntity accountEntity = AccountEntity.builder()
                 .withId(UUID.randomUUID())
                 .withBalance(new BigDecimal(1500))
-                .withCustomerId(UUID.randomUUID())
+                .withCustomerId(UUID.randomUUID().toString())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
                 .build();

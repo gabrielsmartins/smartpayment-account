@@ -5,8 +5,6 @@ import br.gabrielsmartins.smartpayment.application.port.out.customers.ValidateCu
 import br.gabrielsmartins.smartpayment.common.stereotype.UseCase;
 import lombok.RequiredArgsConstructor;
 
-import java.util.UUID;
-
 @UseCase
 @RequiredArgsConstructor
 public class ValidateCustomerService implements ValidateCustomerUseCase {
@@ -14,7 +12,7 @@ public class ValidateCustomerService implements ValidateCustomerUseCase {
     private final ValidateCustomerPort port;
 
     @Override
-    public boolean isValid(UUID customerId) {
+    public boolean isValid(String customerId) {
         return port.isValid(customerId);
     }
 }

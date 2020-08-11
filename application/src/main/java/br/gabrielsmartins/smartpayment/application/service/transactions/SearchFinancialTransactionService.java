@@ -22,7 +22,7 @@ public class SearchFinancialTransactionService implements SearchFinancialTransac
     }
 
     @Override
-    public List<FinancialTransaction> findByCustomerIdAndInterval(UUID customerId, LocalDateTime start, LocalDateTime end) {
+    public List<FinancialTransaction> findByCustomerIdAndInterval(String customerId, LocalDateTime start, LocalDateTime end) {
         return port.findByCustomerIdAndInterval(customerId, start, end);
     }
 }

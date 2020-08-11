@@ -21,7 +21,7 @@ public class SearchFinancialTransactionPersistenceService implements ISearchFina
     }
 
     @Override
-    public List<FinancialTransactionEntity> findByCustomerIdAndInterval(UUID customerId, LocalDateTime startDatetime, LocalDateTime endDatetime) {
+    public List<FinancialTransactionEntity> findByCustomerIdAndInterval(String customerId, LocalDateTime startDatetime, LocalDateTime endDatetime) {
         return repository.findByCustomerIdAndInterval(customerId, startDatetime, endDatetime);
     }
 

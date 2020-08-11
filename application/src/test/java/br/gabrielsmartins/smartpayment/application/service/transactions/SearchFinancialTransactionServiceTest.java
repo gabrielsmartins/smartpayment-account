@@ -18,6 +18,7 @@ import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -50,7 +51,7 @@ public class SearchFinancialTransactionServiceTest {
         Account account = Account.builder()
                 .withId(UUID.randomUUID())
                 .withBalance(new BigDecimal(1500))
-                .withCustomerId(UUID.randomUUID())
+                .withCustomerId(UUID.randomUUID().toString())
                 .withStatus(AccountStatusEnum.ACTIVE)
                 .withType(AccountTypeEnum.FREE)
                 .build();
@@ -60,7 +61,7 @@ public class SearchFinancialTransactionServiceTest {
         LocalDateTime startDatetime = transaction.getCreatedAt().minusHours(1);
         LocalDateTime endDatetime = transaction.getCreatedAt().plusHours(1);
 
-        List<FinancialTransaction> transactions = this.service.findByAccountIdAndInterval(account.getCustomerId(), startDatetime, endDatetime);
+        List<FinancialTransaction> transactions = this.service.findByAccountIdAndInterval(account.getId(), startDatetime, endDatetime);
         assertThat(transactions).isNotEmpty();
     }
 
@@ -83,12 +84,12 @@ public class SearchFinancialTransactionServiceTest {
         Account account = Account.builder()
                 .withId(UUID.randomUUID())
                 .withBalance(new BigDecimal(1500))
-                .withCustomerId(UUID.randomUUID())
+                .withCustomerId(UUID.randomUUID().toString())
                 .withStatus(AccountStatusEnum.ACTIVE)
                 .withType(AccountTypeEnum.FREE)
                 .build();
 
-        when(port.findByCustomerIdAndInterval(any(UUID.class), any(LocalDateTime.class), any(LocalDateTime.class))).thenReturn(Arrays.asList(transaction));
+        when(port.findByCustomerIdAndInterval(anyString(), any(LocalDateTime.class), any(LocalDateTime.class))).thenReturn(Arrays.asList(transaction));
 
         LocalDateTime startDatetime = transaction.getCreatedAt().minusHours(1);
         LocalDateTime endDatetime = transaction.getCreatedAt().plusHours(1);

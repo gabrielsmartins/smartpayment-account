@@ -20,7 +20,7 @@ import java.util.UUID;
 public class Account {
 
     private UUID id;
-    private UUID customerId;
+    private String customerId;
     private AccountTypeEnum type;
     private AccountStatusEnum status;
     private BigDecimal balance;

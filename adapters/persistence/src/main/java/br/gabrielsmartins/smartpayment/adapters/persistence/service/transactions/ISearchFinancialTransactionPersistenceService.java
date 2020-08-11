@@ -10,6 +10,6 @@ public interface ISearchFinancialTransactionPersistenceService {
 
     List<FinancialTransactionEntity> findByAccountIdAndInterval(UUID accountId, LocalDateTime startDatetime, LocalDateTime endDatetime);
 
-    List<FinancialTransactionEntity> findByCustomerIdAndInterval(UUID customerId, LocalDateTime startDatetime, LocalDateTime endDatetime);
+    List<FinancialTransactionEntity> findByCustomerIdAndInterval(String customerId, LocalDateTime startDatetime, LocalDateTime endDatetime);
 
 }

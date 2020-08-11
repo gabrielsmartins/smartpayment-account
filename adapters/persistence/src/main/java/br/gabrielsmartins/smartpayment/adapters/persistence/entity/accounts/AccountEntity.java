@@ -38,7 +38,7 @@ public class AccountEntity implements Serializable {
     private UUID id;
 
     @Column(name="account_customer_id")
-    private UUID customerId;
+    private String customerId;
 
     @Column(name="account_type")
     @Convert(converter = AccountTypeDataEnumConverter.class)

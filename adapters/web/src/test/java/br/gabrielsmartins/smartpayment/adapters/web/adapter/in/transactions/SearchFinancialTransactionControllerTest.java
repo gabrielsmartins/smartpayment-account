@@ -22,6 +22,7 @@ import java.util.Collections;
 import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -80,7 +81,7 @@ public class SearchFinancialTransactionControllerTest {
                 .withStatus(FinancialTransactionStatusEnum.COMMITTED)
                 .build();
 
-        when(useCase.findByCustomerIdAndInterval(any(UUID.class), any(LocalDateTime.class), any(LocalDateTime.class)))
+        when(useCase.findByCustomerIdAndInterval(anyString(), any(LocalDateTime.class), any(LocalDateTime.class)))
                 .thenReturn(Collections.singletonList(transaction));
 
         this.mockMvc.perform(get("/v1/financial_transactions")

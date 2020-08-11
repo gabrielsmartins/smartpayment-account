@@ -14,7 +14,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -44,7 +43,7 @@ public class AccountRepositoryTest {
 
         AccountEntity accountEntity = AccountEntity.builder()
                 .withBalance(new BigDecimal(1500))
-                .withCustomerId(UUID.randomUUID())
+                .withCustomerId(UUID.randomUUID().toString())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
                 .build();
@@ -71,7 +70,7 @@ public class AccountRepositoryTest {
 
         AccountEntity accountEntity = AccountEntity.builder()
                 .withBalance(new BigDecimal(1500))
-                .withCustomerId(UUID.randomUUID())
+                .withCustomerId(UUID.randomUUID().toString())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
                 .build();
@@ -101,7 +100,7 @@ public class AccountRepositoryTest {
 
         AccountEntity accountEntity = AccountEntity.builder()
                 .withBalance(new BigDecimal(1500))
-                .withCustomerId(UUID.randomUUID())
+                .withCustomerId(UUID.randomUUID().toString())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
                 .build();
@@ -131,7 +130,7 @@ public class AccountRepositoryTest {
 
         AccountEntity accountEntity = AccountEntity.builder()
                 .withBalance(new BigDecimal(1500))
-                .withCustomerId(UUID.randomUUID())
+                .withCustomerId(UUID.randomUUID().toString())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
                 .build();

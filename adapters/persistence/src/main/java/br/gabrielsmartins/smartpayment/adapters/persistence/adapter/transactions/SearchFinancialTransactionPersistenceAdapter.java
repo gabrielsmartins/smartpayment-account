@@ -26,7 +26,7 @@ public class SearchFinancialTransactionPersistenceAdapter implements SearchFinan
     }
 
     @Override
-    public List<FinancialTransaction> findByCustomerIdAndInterval(UUID customerId, LocalDateTime startDatetime, LocalDateTime endDatetime) {
+    public List<FinancialTransaction> findByCustomerIdAndInterval(String customerId, LocalDateTime startDatetime, LocalDateTime endDatetime) {
         List<FinancialTransactionEntity> transactionEntities = service.findByCustomerIdAndInterval(customerId, startDatetime, endDatetime);
         return mapper.mapToDomain(transactionEntities);
     }

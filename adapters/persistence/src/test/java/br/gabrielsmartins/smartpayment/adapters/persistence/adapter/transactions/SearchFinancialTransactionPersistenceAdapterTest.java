@@ -17,6 +17,7 @@ import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -61,7 +62,7 @@ public class SearchFinancialTransactionPersistenceAdapterTest {
     @Test
     @DisplayName("Given Customer Id And Interval Then Return Financial Transaction List")
     public void givenCustomerIdAndIntervalThenReturnFinancialTransactionList(){
-        UUID accountId = UUID.randomUUID();
+        String customerId = UUID.randomUUID().toString();
         LocalDateTime startDate = LocalDateTime.now();
         LocalDateTime endDate = LocalDateTime.now();
 
@@ -76,10 +77,10 @@ public class SearchFinancialTransactionPersistenceAdapterTest {
                 .withStatus(FinancialTransactionStatusDataEnum.COMMITTED)
                 .build();
 
-        when(service.findByCustomerIdAndInterval(any(UUID.class), any(LocalDateTime.class), any(LocalDateTime.class))).thenReturn(Collections.singletonList(transactionEntity));
+        when(service.findByCustomerIdAndInterval(anyString(), any(LocalDateTime.class), any(LocalDateTime.class))).thenReturn(Collections.singletonList(transactionEntity));
 
 
-        List<FinancialTransactionEntity> transactions = this.service.findByCustomerIdAndInterval(accountId, startDate, endDate);
+        List<FinancialTransactionEntity> transactions = this.service.findByCustomerIdAndInterval(customerId, startDate, endDate);
         assertThat(transactions).isNotNull();
     }
 

@@ -57,7 +57,7 @@ public class CreateAccountControllerTest {
         AccountDTO accountDTO = AccountDTO.builder()
                 .withId(UUID.randomUUID())
                 .withBalance(new BigDecimal(1500))
-                .withCustomerId(UUID.randomUUID())
+                .withCustomerId(UUID.randomUUID().toString())
                 .withStatus(AccountStatusEnum.ACTIVE.name())
                 .withType(AccountTypeEnum.FREE.name())
                 .build();

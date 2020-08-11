@@ -36,11 +36,11 @@ public class SearchFinancialTransactionController {
 
     @GetMapping(params = {"customer_id","start_date_time","end_date_time"})
     public ResponseEntity<?> findByCustomerIdAndInterval(@RequestHeader HttpHeaders httpHeaders,
-                                                        @RequestParam(value = "customer_id", required = true)UUID accountId,
+                                                        @RequestParam(value = "customer_id", required = true)String customerId,
                                                         @RequestParam(value = "start_date_time", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDatetime,
                                                         @RequestParam(value = "end_date_time", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)  LocalDateTime endDatetime){
 
-        List<FinancialTransaction> transactions = useCase.findByCustomerIdAndInterval(accountId, startDatetime, endDatetime);
+        List<FinancialTransaction> transactions = useCase.findByCustomerIdAndInterval(customerId, startDatetime, endDatetime);
         if(transactions.isEmpty())
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         return new ResponseEntity<>(mapper.mapToDTO(transactions), HttpStatus.OK);

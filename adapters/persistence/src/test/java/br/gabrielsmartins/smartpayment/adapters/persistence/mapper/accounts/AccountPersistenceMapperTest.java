@@ -18,7 +18,6 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -52,7 +51,7 @@ public class AccountPersistenceMapperTest {
         Account account = Account.builder()
                                 .withId(UUID.randomUUID())
                                 .withBalance(new BigDecimal(1500))
-                                .withCustomerId(UUID.randomUUID())
+                                .withCustomerId(UUID.randomUUID().toString())
                                 .withStatus(AccountStatusEnum.ACTIVE)
                                 .withType(AccountTypeEnum.FREE)
                                 .build();
@@ -85,7 +84,7 @@ public class AccountPersistenceMapperTest {
         AccountEntity accountEntity = AccountEntity.builder()
                 .withId(UUID.randomUUID())
                 .withBalance(new BigDecimal(1500))
-                .withCustomerId(UUID.randomUUID())
+                .withCustomerId(UUID.randomUUID().toString())
                 .withStatus(AccountStatusDataEnum.ACTIVE)
                 .withType(AccountTypeDataEnum.FREE)
                 .build();

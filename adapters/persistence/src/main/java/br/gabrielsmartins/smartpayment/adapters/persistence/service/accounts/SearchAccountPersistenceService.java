@@ -22,7 +22,7 @@ public class SearchAccountPersistenceService implements ISearchAccountPersistenc
     }
 
     @Override
-    public List<AccountEntity> findByCustomerId(UUID customerId) {
+    public List<AccountEntity> findByCustomerId(String customerId) {
         return repository.findByCustomerId(customerId);
     }
 

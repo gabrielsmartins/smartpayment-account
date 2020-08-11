@@ -16,6 +16,7 @@ import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -50,7 +51,7 @@ public class SearchAccountServiceTest {
         Account account = Account.builder()
                 .withId(UUID.randomUUID())
                 .withBalance(new BigDecimal(1500))
-                .withCustomerId(UUID.randomUUID())
+                .withCustomerId(UUID.randomUUID().toString())
                 .withStatus(AccountStatusEnum.ACTIVE)
                 .withType(AccountTypeEnum.FREE)
                 .build();
@@ -81,14 +82,14 @@ public class SearchAccountServiceTest {
         Account account = Account.builder()
                 .withId(UUID.randomUUID())
                 .withBalance(new BigDecimal(1500))
-                .withCustomerId(UUID.randomUUID())
+                .withCustomerId(UUID.randomUUID().toString())
                 .withStatus(AccountStatusEnum.ACTIVE)
                 .withType(AccountTypeEnum.FREE)
                 .build();
 
-        when(port.findByCustomerId(any(UUID.class))).thenReturn(Collections.singletonList(account));
+        when(port.findByCustomerId(anyString())).thenReturn(Collections.singletonList(account));
 
-        List<Account> accounts = this.service.findByCustomerId(UUID.randomUUID());
+        List<Account> accounts = this.service.findByCustomerId(UUID.randomUUID().toString());
         assertThat(accounts).isNotEmpty();
     }
 
@@ -112,7 +113,7 @@ public class SearchAccountServiceTest {
         Account account = Account.builder()
                 .withId(UUID.randomUUID())
                 .withBalance(new BigDecimal(1500))
-                .withCustomerId(UUID.randomUUID())
+                .withCustomerId(UUID.randomUUID().toString())
                 .withStatus(AccountStatusEnum.ACTIVE)
                 .withType(AccountTypeEnum.FREE)
                 .build();

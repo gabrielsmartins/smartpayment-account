@@ -14,12 +14,12 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -56,13 +56,13 @@ public class CreateAccountServiceTest {
         Account account = Account.builder()
                                  .withId(UUID.randomUUID())
                                  .withBalance(new BigDecimal(1500))
-                                 .withCustomerId(UUID.randomUUID())
+                                 .withCustomerId(UUID.randomUUID().toString())
                                  .withStatus(AccountStatusEnum.ACTIVE)
                                  .withType(AccountTypeEnum.FREE)
                                  .build();
 
         when(saveAccountUseCase.save(any(Account.class))).thenAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
-        when(validateCustomerUseCase.isValid(any(UUID.class))).thenReturn(true);
+        when(validateCustomerUseCase.isValid(anyString())).thenReturn(true);
 
         Account savedAccount = this.service.create(account);
         assertThat(savedAccount).isNotNull();
@@ -88,13 +88,13 @@ public class CreateAccountServiceTest {
         Account account = Account.builder()
                 .withId(UUID.randomUUID())
                 .withBalance(new BigDecimal(1500))
-                .withCustomerId(UUID.randomUUID())
+                .withCustomerId(UUID.randomUUID().toString())
                 .withStatus(AccountStatusEnum.ACTIVE)
                 .withType(AccountTypeEnum.FREE)
                 .build();
 
         when(saveAccountUseCase.save(any(Account.class))).thenAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
-        when(validateCustomerUseCase.isValid(any(UUID.class))).thenReturn(false);
+        when(validateCustomerUseCase.isValid(anyString())).thenReturn(false);
 
        assertThrows(InvalidCustomerException.class, ()-> {
            this.service.create(account);

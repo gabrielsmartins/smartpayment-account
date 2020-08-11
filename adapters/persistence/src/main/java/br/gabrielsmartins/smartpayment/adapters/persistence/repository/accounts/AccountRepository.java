@@ -14,7 +14,7 @@ import java.util.UUID;
 public interface AccountRepository extends JpaRepository<AccountEntity, UUID> {
 
     @Query(value = "select a from AccountEntity a where a.customerId = :pCustomerId")
-    List<AccountEntity> findByCustomerId(@Param("pCustomerId") UUID customerId);
+    List<AccountEntity> findByCustomerId(@Param("pCustomerId") String customerId);
 
     @Query(value = "select a from AccountEntity a where a.type = :pType")
     List<AccountEntity> findByType(@Param("pType") AccountTypeDataEnum type);

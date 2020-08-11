@@ -30,7 +30,7 @@ public class SearchAccountPersistenceAdapter implements SearchAccountPort {
     }
 
     @Override
-    public List<Account> findByCustomerId(UUID customerId) {
+    public List<Account> findByCustomerId(String customerId) {
         List<AccountEntity> accountEntities = service.findByCustomerId(customerId);
         return mapper.mapToDomain(accountEntities);
     }

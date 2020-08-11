@@ -13,6 +13,7 @@ builder = @Builder(disableBuilder = true))
 public interface AccountWebMapper {
 
 
+    @Mapping(target = "status", constant = "ACTIVE")
     Account mapToDomain(AccountDTO accountRequestDto);
 
     List<Account> mapToDomain(List<AccountDTO> accountDTOS);
