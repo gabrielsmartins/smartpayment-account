@@ -16,7 +16,7 @@ First of all run [SmartPayment Customers](https://github.com/gabrielsmartins/sma
 1. Build Project
 
 `
-gradlew clean build
+./gradlew clean build
 `
 
 2. Run container services
@@ -28,7 +28,7 @@ docker-compose up --build
 3. Send a request 
 
 `
-curl -d '{ "customer_id": "<customer_id>", "type" : "FREE", "balance" : 2500.50 }' -H "Content-Type: application/json" -X POST localhost:8080/v1/categories
+curl -d '{ "customer_id": "<customer_id>", "type" : "FREE", "balance" : 2500.50 }' -H "Content-Type: application/json" -X POST localhost:8080/v1/accounts
 `
 
 4. Open the Jaeger Console: http://localhost:16686/
@@ -43,7 +43,7 @@ docker run -d --name jaegerserver -e COLLECTOR_ZIPKIN_HTTP_PORT=9411 -p 5775:577
 `
 
 `
-gradlew bootRun -Plocal
+./gradlew bootRun -Plocal
 `
 
 ### Other Projects
