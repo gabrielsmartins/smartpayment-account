@@ -10,6 +10,5 @@ before_script:
 build-docker:
   stage: build
   script:
-    - docker build -t smartpayment-accounts .
-    - docker tag gasmartins/smartpayment-accounts:latest
+    - docker build -t gasmartins/smartpayment-accounts .
     - docker push gasmartins/smartpayment-accounts:latest
