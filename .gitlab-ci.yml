@@ -10,6 +10,6 @@ before_script:
 build-docker:
   stage: build
   script:
-    - docker build -t inventory-image .
+    - docker build -t smartpayment-accounts .
     - docker tag gasmartins/smartpayment-accounts:latest
     - docker push gasmartins/smartpayment-accounts:latest
