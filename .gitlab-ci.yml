@@ -6,15 +6,13 @@ stages:
   - test
   - deploy
 
-services:
-  - docker:dind
-
-before_script:
-  - docker info
-  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
-
 build-docker:
   stage: pre-build
+  services:
+    - docker:dind
+  before_script:
+    - docker info
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
   script:
     - docker build -t gasmartins/smartpayment-accounts .
     - docker push gasmartins/smartpayment-accounts:latest
