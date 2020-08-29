@@ -8,8 +8,6 @@ stages:
 
 build-project:
   stage: build
-  dependencies:
-    - build-docker
   script:
     - ./gradlew --build-cache assemble
 
