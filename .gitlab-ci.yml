@@ -1,13 +1,30 @@
-image: docker:stable
+image: gradle:alpine
 
 stages:
-  - pre-build
   - build
   - test
+  - build-image
   - deploy
 
+build-project:
+  stage: build
+  dependencies:
+    - build-docker
+  script:
+    - ./gradlew --build-cache assemble
+
+test-project:
+  stage: test
+  dependencies:
+    - build-project
+  script:
+    - ./gradlew check
+
 build-docker:
-  stage: pre-build
+  image: docker:stable
+  stage: build-image
+  dependencies:
+    - test-project
   services:
     - docker:dind
   before_script:
@@ -16,10 +33,3 @@ build-docker:
   script:
     - docker build -t gasmartins/smartpayment-accounts .
     - docker push gasmartins/smartpayment-accounts:latest
-
-build-project:
-  stage: build
-  dependencies:
-    - build-docker
-  script:
-    - echo "Runner"
