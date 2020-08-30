@@ -1,4 +1,4 @@
-image: gradle:latest
+image: docker:stable
 
 stages:
   - build
@@ -7,11 +7,13 @@ stages:
   - deploy
 
 build-project:
+  image: gradle:latest
   stage: build
   script:
     - ./gradlew --build-cache assemble
 
 test-project:
+  image: gradle:latest
   stage: test
   dependencies:
     - build-project
@@ -19,7 +21,6 @@ test-project:
     - ./gradlew check
 
 build-docker:
-  image: docker:stable
   stage: build-image
   dependencies:
     - test-project
